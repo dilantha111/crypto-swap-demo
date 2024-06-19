@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
 import "./App.css";
-import SwapComponent from "./components/SwapComponent";
-import { TokenContext } from "./contexts/TokenContext";
-import { getTokens } from "./services/Tokens.service";
+import { getTokens } from "./services/Tokens";
+import CoinDropDown from "./components/DropDown";
 import { Coin } from "./types/coin.type";
-import ConnectWalletButton from "./components/ConnectWalletButton";
+import TokenField from "./components/TokenField";
+import { TokenContext } from "./contexts/TokenContext";
 
 function App() {
   const [tokens, setTokens] = React.useState<Coin[]>([]);
+
+  const [value, setValue] = React.useState<number>(0);
 
   useEffect(() => {
     getTokens().then((data) => {
@@ -18,9 +20,7 @@ function App() {
   return (
     <div className='App'>
       <TokenContext.Provider value={tokens}>
-        <h1>Swap</h1>
-        <SwapComponent />
-        <ConnectWalletButton />
+        <TokenField labelText='sell' onChange={setValue} value={value} />
       </TokenContext.Provider>
     </div>
   );

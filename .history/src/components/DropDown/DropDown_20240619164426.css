@@ -1,0 +1,9 @@
+.drop-down {
+  position: relative;
+  display: inline-block;
+}
+
+.drop-down__img {
+  width: 20px;
+  height: 20px;
+}

@@ -18,7 +18,6 @@ function App() {
   return (
     <div className='App'>
       <TokenContext.Provider value={tokens}>
-        <h1>Swap</h1>
         <SwapComponent />
         <ConnectWalletButton />
       </TokenContext.Provider>
