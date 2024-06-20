@@ -1,15 +1,18 @@
 .App {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
 }
 
 .main-title {
-  margin: 20px 0;
+  align-self: center;
+  margin-top: 50px;
+  margin-bottom: 20px;
 }
 
 .main-container {
   display: flex;
+  align-self: center;
   flex-direction: column;
   justify-items: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
