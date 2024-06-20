@@ -36,5 +36,9 @@ export const getTokenRatio = async (fromToken: string, toToken: string) => {
     return Promise.resolve(1);
   }
 
+  if (!stubRatios[fromToken] || !stubRatios[fromToken][toToken]) {
+    return Promise.resolve(undefined);
+  }
+
   return Promise.resolve(stubRatios[fromToken][toToken]);
 };

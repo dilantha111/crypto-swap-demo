@@ -75,6 +75,11 @@ export const SwapComponent: React.FC = () => {
     }
 
     const ratio = await getTokenRatio(fromToken, toToken);
+
+    if (!ratio) {
+      return;
+    }
+
     const tokenValue = getTokenValue(ratio, value);
 
     if (type === UpdateValueFromRatioType.SELL) {
