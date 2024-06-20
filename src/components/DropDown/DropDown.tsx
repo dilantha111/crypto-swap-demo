@@ -5,25 +5,27 @@ import "./DropDown.css";
 
 interface DropDownProps {
   itemList: Coin[];
-  selectedCoin: Coin;
+  selectedCoin?: Coin;
   onSelect: (value: Coin) => void;
 }
 
 export const CoinDropDown: React.FC<DropDownProps> = ({
   itemList,
-  selectedCoin: selectedValue,
+  selectedCoin,
   onSelect,
 }) => {
   return (
     <div className='drop-down'>
       <Dropdown>
         <Dropdown.Toggle variant='primary' className='dropdown-toggle'>
-          <img
-            className='drop-down__img'
-            src={selectedValue.logo}
-            alt={selectedValue.text}
-          />
-          {selectedValue.text}
+          {selectedCoin ? (
+            <img
+              className='drop-down__img'
+              src={selectedCoin.logo}
+              alt={selectedCoin.text}
+            />
+          ) : null}
+          {selectedCoin ? selectedCoin.text : "Select token"}
         </Dropdown.Toggle>
 
         <Dropdown.Menu className='drop-down__menu'>

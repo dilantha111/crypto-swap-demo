@@ -21,18 +21,16 @@ export const TokenField: React.FC<TokenFieldProps> = ({
   onCoinSelect,
 }) => {
   const tokens = React.useContext(TokenContext);
-  const [selectedCoin, setSelectedCoin] = React.useState<Coin>(
+  const [selectedCoin, setSelectedCoin] = React.useState<Coin | undefined>(
     tokens[0] || null
   );
-
-  useEffect(() => {
-    setSelectedCoin(tokens[0]);
-  }, [tokens]);
 
   useEffect(() => {
     if (selectedCoinId) {
       const coin = tokens.find((coin) => coin.value === selectedCoinId);
       coin && setSelectedCoin(coin);
+    } else {
+      setSelectedCoin(undefined);
     }
   }, [selectedCoinId, tokens]);
 
@@ -52,7 +50,7 @@ export const TokenField: React.FC<TokenFieldProps> = ({
           onChange={(e) => onValueChange(Number(e.target.value))}
         />
 
-        {selectedCoin ? (
+        {tokens ? (
           <CoinDropDown
             itemList={tokens}
             selectedCoin={selectedCoin}
