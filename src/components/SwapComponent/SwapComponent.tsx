@@ -84,15 +84,13 @@ export const SwapComponent: React.FC = () => {
 
   return (
     <div className='swap-component'>
-      <div className='swap-component__input'>
-        <TokenField
-          labelText='sell'
-          onCoinSelect={onSellCoinSelect}
-          onValueChange={onSellValueChange}
-          selectedCoinId={sellCoinId}
-          value={sellValue}
-        />
-      </div>
+      <TokenField
+        labelText='sell'
+        onCoinSelect={onSellCoinSelect}
+        onValueChange={onSellValueChange}
+        selectedCoinId={sellCoinId}
+        value={sellValue}
+      />
 
       <div className='swap-component__button'>
         <Button variant='primary' onClick={onSwap}>
@@ -100,15 +98,13 @@ export const SwapComponent: React.FC = () => {
         </Button>
       </div>
 
-      <div className='swap-component__input'>
-        <TokenField
-          labelText='buy'
-          onCoinSelect={onBuyCoinSelect}
-          onValueChange={onBuyValueChange}
-          selectedCoinId={buyCoinId}
-          value={buyValue}
-        />
-      </div>
+      <TokenField
+        labelText='buy'
+        onCoinSelect={onBuyCoinSelect}
+        onValueChange={onBuyValueChange}
+        selectedCoinId={buyCoinId}
+        value={buyValue}
+      />
     </div>
   );
 };

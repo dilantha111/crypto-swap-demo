@@ -3,8 +3,8 @@ import "./App.css";
 import ConnectWalletButton from "./components/ConnectWalletButton";
 import SwapComponent from "./components/SwapComponent";
 import { TokenContext } from "./contexts/TokenContext";
-import { Coin } from "./types/coin.type";
 import { getTokens } from "./services/token.service";
+import { Coin } from "./types/coin.type";
 
 function App() {
   const [tokens, setTokens] = React.useState<Coin[]>([]);
@@ -18,9 +18,11 @@ function App() {
   return (
     <div className='App'>
       <TokenContext.Provider value={tokens}>
-        <h1>Swap</h1>
-        <SwapComponent />
-        <ConnectWalletButton />
+        <h1 className='main-title'>Swap anytime, anywhere</h1>
+        <div className='main-container'>
+          <SwapComponent />
+          <ConnectWalletButton />
+        </div>
       </TokenContext.Provider>
     </div>
   );

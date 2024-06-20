@@ -1,10 +1,10 @@
 .token-field {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  align-items: center;
   padding: 0.5rem;
   border: 1px solid #ccc;
-  border-radius: 0.25rem;
+  border-radius: 1rem;
 }
 
 .token-field__container {
@@ -19,13 +19,14 @@
 
 .token-field__input-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-direction: row;
   align-items: center;
   margin-bottom: 2rem;
 }
 
 .token-field__input {
+  display: flex;
   flex: 2;
   font-size: 2.5rem;
 }
@@ -55,6 +56,7 @@
 }
 
 .token-field__dropdown-container {
-  flex: 1;
+  display: flex;
+  justify-items: flex-end;
   padding: 0.5rem;
 }
