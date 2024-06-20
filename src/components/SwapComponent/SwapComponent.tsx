@@ -37,7 +37,12 @@ export const SwapComponent: React.FC = () => {
     }
 
     setSellCoinId(coinId);
-    updateValueFromRatio(buyValue, UpdateValueFromRatioType.BUY);
+    updateValueFromRatio(
+      buyValue,
+      UpdateValueFromRatioType.BUY,
+      coinId,
+      buyCoinId
+    );
   };
 
   const onBuyCoinSelect = (coinId: string) => {
@@ -46,17 +51,24 @@ export const SwapComponent: React.FC = () => {
     }
 
     setBuyCoinId(coinId);
-    updateValueFromRatio(sellValue, UpdateValueFromRatioType.SELL);
+    updateValueFromRatio(
+      sellValue,
+      UpdateValueFromRatioType.SELL,
+      sellCoinId,
+      coinId
+    );
   };
 
   const updateValueFromRatio = async (
     value: number,
-    type: UpdateValueFromRatioType
+    type: UpdateValueFromRatioType,
+    _sellCoinId: string | undefined = sellCoinId,
+    _buyCoinId: string | undefined = buyCoinId
   ) => {
     const fromToken =
-      type === UpdateValueFromRatioType.SELL ? sellCoinId : buyCoinId;
+      type === UpdateValueFromRatioType.SELL ? _sellCoinId : _buyCoinId;
     const toToken =
-      type === UpdateValueFromRatioType.SELL ? buyCoinId : sellCoinId;
+      type === UpdateValueFromRatioType.SELL ? _buyCoinId : _sellCoinId;
 
     if (!fromToken || !toToken) {
       return;
