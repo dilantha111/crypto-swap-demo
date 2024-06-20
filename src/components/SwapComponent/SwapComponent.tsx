@@ -1,6 +1,13 @@
 import React from "react";
 import TokenField from "../TokenField";
 import { defaultSellCoinId } from "../../consts/coin-ids";
+import { getTokenRatio } from "../../services/token-ratio.service";
+import { getTokenValue } from "../../utils/token-value.utils";
+
+enum UpdateValueFromRatioType {
+  SELL,
+  BUY,
+}
 
 export const SwapComponent: React.FC = () => {
   const [sellValue, setSellValue] = React.useState<number>(0);
@@ -27,6 +34,7 @@ export const SwapComponent: React.FC = () => {
     }
 
     setSellCoinId(coinId);
+    updateValueFromRatio(buyValue, UpdateValueFromRatioType.BUY);
   };
 
   const onBuyCoinSelect = (coinId: string) => {
@@ -35,6 +43,40 @@ export const SwapComponent: React.FC = () => {
     }
 
     setBuyCoinId(coinId);
+    updateValueFromRatio(sellValue, UpdateValueFromRatioType.SELL);
+  };
+
+  const updateValueFromRatio = async (
+    value: number,
+    type: UpdateValueFromRatioType
+  ) => {
+    const fromToken =
+      type === UpdateValueFromRatioType.SELL ? sellCoinId : buyCoinId;
+    const toToken =
+      type === UpdateValueFromRatioType.SELL ? buyCoinId : sellCoinId;
+
+    if (!fromToken || !toToken) {
+      return;
+    }
+
+    const ratio = await getTokenRatio(fromToken, toToken);
+    const tokenValue = getTokenValue(ratio, value);
+
+    if (type === UpdateValueFromRatioType.SELL) {
+      setBuyValue(tokenValue);
+    } else {
+      setSellValue(tokenValue);
+    }
+  };
+
+  const onSellValueChange = (value: number) => {
+    setSellValue(value);
+    updateValueFromRatio(value, UpdateValueFromRatioType.SELL);
+  };
+
+  const onBuyValueChange = (value: number) => {
+    setBuyValue(value);
+    updateValueFromRatio(value, UpdateValueFromRatioType.BUY);
   };
 
   return (
@@ -43,7 +85,7 @@ export const SwapComponent: React.FC = () => {
         <TokenField
           labelText='sell'
           onCoinSelect={onSellCoinSelect}
-          onValueChange={setSellValue}
+          onValueChange={onSellValueChange}
           selectedCoinId={sellCoinId}
           value={sellValue}
         />
@@ -57,7 +99,7 @@ export const SwapComponent: React.FC = () => {
         <TokenField
           labelText='buy'
           onCoinSelect={onBuyCoinSelect}
-          onValueChange={setBuyValue}
+          onValueChange={onBuyValueChange}
           selectedCoinId={buyCoinId}
           value={buyValue}
         />
