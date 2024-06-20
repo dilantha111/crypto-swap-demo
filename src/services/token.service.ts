@@ -16,6 +16,16 @@ const stubTokens = [
     logo: coinLogos.binancecoin,
     text: "BNB",
   },
+  {
+    value: "tether",
+    logo: coinLogos.tether,
+    text: "USDT",
+  },
+  {
+    value: "dai",
+    logo: coinLogos.dai,
+    text: "DAI",
+  },
 ];
 
 export const getTokens = async () => {
