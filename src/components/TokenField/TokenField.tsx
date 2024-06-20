@@ -7,14 +7,18 @@ interface TokenFieldProps {
   labelText: string;
   value: number;
   placeholder?: string;
-  onChange: (value: number) => void;
+  selectedCoinId?: string;
+  onCoinSelect: (coinId: string) => void;
+  onValueChange: (value: number) => void;
 }
 
 export const TokenField: React.FC<TokenFieldProps> = ({
   labelText,
   value,
+  selectedCoinId,
   placeholder = 0,
-  onChange,
+  onValueChange,
+  onCoinSelect,
 }) => {
   const tokens = React.useContext(TokenContext);
   const [selectedCoin, setSelectedCoin] = React.useState<Coin>(
@@ -25,6 +29,18 @@ export const TokenField: React.FC<TokenFieldProps> = ({
     setSelectedCoin(tokens[0]);
   }, [tokens]);
 
+  useEffect(() => {
+    if (selectedCoinId) {
+      const coin = tokens.find((coin) => coin.value === selectedCoinId);
+      coin && setSelectedCoin(coin);
+    }
+  }, [selectedCoinId, tokens]);
+
+  const onCoinDropDownSelect = (coin: Coin) => {
+    setSelectedCoin(coin);
+    onCoinSelect(coin.value);
+  };
+
   return (
     <div className='token-field'>
       <div className='token-field__input'>
@@ -33,16 +49,14 @@ export const TokenField: React.FC<TokenFieldProps> = ({
           value={value ? value.toString() : ""}
           type='number'
           placeholder={placeholder.toString()}
-          onChange={(e) => onChange(Number(e.target.value))}
+          onChange={(e) => onValueChange(Number(e.target.value))}
         />
 
         {selectedCoin ? (
           <CoinDropDown
             itemList={tokens}
             selectedCoin={selectedCoin}
-            onSelect={(val) => {
-              setSelectedCoin(val);
-            }}
+            onSelect={onCoinDropDownSelect}
           />
         ) : null}
       </div>
