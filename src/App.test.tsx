@@ -1,9 +1,25 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("App", () => {
+  beforeEach(() => {
+    /**
+     * we are mocking at each test case because, react cli automatically resets
+     * the mocks after each test case
+     */
+    jest.mock("./services/token.service", () => ({
+      getTokens: jest.fn(() => Promise.resolve([]) as any),
+    }));
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  test("renders App component", async () => {
+    render(<App />);
+
+    const linkElement = await screen.findByText(/Swap anytime, anywhere/i);
+    expect(linkElement).toBeInTheDocument();
+  });
 });
