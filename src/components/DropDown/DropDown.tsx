@@ -17,7 +17,7 @@ export const CoinDropDown: React.FC<DropDownProps> = ({
   return (
     <div className='drop-down'>
       <Dropdown>
-        <Dropdown.Toggle variant='primary' className='dropdown-toggle'>
+        <Dropdown.Toggle variant='outline-primary' className='dropdown-toggle'>
           {selectedCoin ? (
             <img
               className='drop-down__img'

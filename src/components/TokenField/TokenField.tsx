@@ -3,6 +3,8 @@ import { TokenContext } from "../../contexts/TokenContext";
 import { Coin } from "../../types/coin.type";
 import CoinDropDown from "../DropDown";
 
+import "./TokenField.css";
+
 interface TokenFieldProps {
   labelText: string;
   value: number;
@@ -41,22 +43,29 @@ export const TokenField: React.FC<TokenFieldProps> = ({
 
   return (
     <div className='token-field'>
-      <div className='token-field__input'>
-        <label>{labelText}</label>
-        <input
-          value={value ? value.toString() : ""}
-          type='number'
-          placeholder={placeholder.toString()}
-          onChange={(e) => onValueChange(Number(e.target.value))}
-        />
-
-        {tokens ? (
-          <CoinDropDown
-            itemList={tokens}
-            selectedCoin={selectedCoin}
-            onSelect={onCoinDropDownSelect}
-          />
-        ) : null}
+      <div className='token-field__container'>
+        <div className='token-field__label'>
+          <label>{labelText}</label>
+        </div>
+        <div className='token-field__input-container'>
+          <div className='token-field__input'>
+            <input
+              value={value ? value.toString() : ""}
+              type='number'
+              placeholder={placeholder.toString()}
+              onChange={(e) => onValueChange(Number(e.target.value))}
+            />
+          </div>
+          <div className='token-field__dropdown-container'>
+            {tokens ? (
+              <CoinDropDown
+                itemList={tokens}
+                selectedCoin={selectedCoin}
+                onSelect={onCoinDropDownSelect}
+              />
+            ) : null}
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,60 @@
+.token-field {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+}
+
+.token-field__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.token-field__label {
+  display: flex;
+  justify-items: left;
+}
+
+.token-field__input-container {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.token-field__input {
+  flex: 2;
+  font-size: 2.5rem;
+}
+
+.token-field__input input {
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  background: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.token-field__input input[type="number"] {
+  -moz-appearance: textfield; /* For Firefox */
+}
+
+.token-field__input input[type="number"]::-webkit-inner-spin-button,
+.token-field__input input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none; /* For WebKit browsers like Chrome and Safari */
+  margin: 0; /* Removes the margin to prevent space reserved for the spinner */
+}
+
+.token-field__dropdown-container {
+  flex: 1;
+  padding: 0.5rem;
+}
