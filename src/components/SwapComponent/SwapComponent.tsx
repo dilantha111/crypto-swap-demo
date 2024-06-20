@@ -3,6 +3,9 @@ import TokenField from "../TokenField";
 import { defaultSellCoinId } from "../../consts/coin-ids";
 import { getTokenRatio } from "../../services/token-ratio.service";
 import { getTokenValue } from "../../utils/token-value.utils";
+import Button from "react-bootstrap/Button";
+
+import "./SwapComponent.css";
 
 enum UpdateValueFromRatioType {
   SELL,
@@ -92,7 +95,9 @@ export const SwapComponent: React.FC = () => {
       </div>
 
       <div className='swap-component__button'>
-        <button onClick={onSwap}>Swap</button>
+        <Button variant='primary' onClick={onSwap}>
+          &#x2193;
+        </Button>
       </div>
 
       <div className='swap-component__input'>

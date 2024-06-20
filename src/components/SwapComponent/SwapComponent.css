@@ -1,0 +1,11 @@
+.swap-component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.swap-component__button {
+  margin: -15px auto;
+  z-index: 2;
+}
