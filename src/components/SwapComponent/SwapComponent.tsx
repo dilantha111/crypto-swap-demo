@@ -12,6 +12,11 @@ enum UpdateValueFromRatioType {
   BUY,
 }
 
+/**
+ *
+ * on SwapComponent we are handling more of the conversion logics and real time updates
+ * for conversion of tokens.
+ */
 export const SwapComponent: React.FC = () => {
   const [sellValue, setSellValue] = React.useState<number>(0);
   const [buyValue, setBuyValue] = React.useState<number>(0);
@@ -59,6 +64,13 @@ export const SwapComponent: React.FC = () => {
     );
   };
 
+  /**
+   *
+   * This function is used to update the value based on ratio asynchrounously, on updates
+   * to coin types and values.
+   * we are using the optional param of coinIDs to avoid a much complex useEffect scenario
+   * which will need to be listen to updates to coin type changes.
+   */
   const updateValueFromRatio = async (
     value: number,
     type: UpdateValueFromRatioType,

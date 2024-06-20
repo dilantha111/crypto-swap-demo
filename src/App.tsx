@@ -7,6 +7,10 @@ import { TokenContext } from "./contexts/TokenContext";
 import { getTokens } from "./services/token.service";
 import { Coin } from "./types/coin.type";
 
+/**
+ *
+ * Main App component act as the TokenContext provider and main container for the application.
+ */
 function App() {
   const [tokens, setTokens] = React.useState<Coin[]>([]);
 
