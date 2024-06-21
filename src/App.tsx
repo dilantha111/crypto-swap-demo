@@ -13,6 +13,7 @@ import { Coin } from "./types/coin.type";
  */
 function App() {
   const [tokens, setTokens] = React.useState<Coin[]>([]);
+  const [account, setAccount] = React.useState<string | undefined>();
 
   useEffect(() => {
     getTokens().then((data) => {
@@ -22,13 +23,13 @@ function App() {
 
   return (
     <div className='App'>
-      <Navigation />
+      <Navigation account={account} />
 
       <TokenContext.Provider value={tokens}>
         <h1 className='main-title'>Swap anytime, anywhere</h1>
         <div className='main-container'>
           <SwapComponent />
-          <ConnectWalletButton />
+          <ConnectWalletButton account={account} setAccount={setAccount} />
         </div>
       </TokenContext.Provider>
     </div>

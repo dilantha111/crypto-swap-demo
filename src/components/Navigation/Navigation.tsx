@@ -4,7 +4,11 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
-export const Navigation = () => (
+interface NavigationProps {
+  account: string | undefined;
+}
+
+export const Navigation: React.FC<NavigationProps> = ({ account }) => (
   <Navbar expand='lg' className='bg-body-tertiary'>
     <Container fluid>
       <Navbar.Brand href='#'>Swap</Navbar.Brand>
@@ -25,7 +29,9 @@ export const Navigation = () => (
             className='me-2'
             aria-label='Search'
           />
-          <Button variant='outline-success'>Connect</Button>
+          <Button variant='outline-success'>
+            {account ? account : "Connect"}
+          </Button>
         </Form>
       </Navbar.Collapse>
     </Container>

@@ -4,9 +4,15 @@ import "./ConnectWalletButton.css";
 import React from "react";
 import Web3 from "web3";
 
-export const ConnectWalletButton: React.FC = () => {
-  const [accounts, setAccounts] = React.useState<string[]>([]);
+interface ConnectWalletButtonProps {
+  account: string | undefined;
+  setAccount: (account: string | undefined) => void;
+}
 
+export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
+  account,
+  setAccount,
+}) => {
   const handleConnectWallet = async () => {
     try {
       // Check if Web3 is injected by MetaMask
@@ -20,7 +26,8 @@ export const ConnectWalletButton: React.FC = () => {
 
         // Get the user's account
         const accounts = await web3.eth.getAccounts();
-        setAccounts(accounts);
+        setAccount(accounts[0]);
+        window.alert("Wallet connected successfully !!!");
       } else {
         window.alert(
           "MetaMask is not installed. Please install to proceed !!!"
