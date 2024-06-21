@@ -28,6 +28,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Typings
   - TypeScript has been used to encourage typings for more clarity and maintainability in the code.
 
+## Notes
+
+- There's a warning for `react-dom/test-utils` due to version mismatch in testing library and react which is used in create react app.
+
 ## Available Scripts
 
 In the project directory, you can run:

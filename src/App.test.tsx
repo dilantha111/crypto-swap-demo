@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import App from "./App";
+import { act } from "react";
 
 describe("App", () => {
   beforeEach(() => {
@@ -19,7 +20,9 @@ describe("App", () => {
   test("renders App component", async () => {
     render(<App />);
 
-    const linkElement = await screen.findByText(/Swap anytime, anywhere/i);
-    expect(linkElement).toBeInTheDocument();
+    await act(async () => {
+      const linkElement = await screen.findByText(/Swap anytime, anywhere/i);
+      expect(linkElement).toBeInTheDocument();
+    });
   });
 });
