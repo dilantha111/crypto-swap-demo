@@ -9,6 +9,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - `git clone <github-repo-url>`
 - `npm i`
+- `cp .env.example .env`
 - `npm start`
 - You will need to install [Metamask](https://metamask.io/) in your browser to use the `connect wallet` functionality. This can be installed as a plugin for your desired browser ([Chrome](https://metamask.io/download/) is recommended)
   - Note that this is a placeholder for the moment.
@@ -24,6 +25,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   - Pre commit hook with husky to ensure proper testing and linting is done before committing
   - Test Coverage: To understand the level of confidence.
   - Unit testing has included for services and
+- Typings
+  - TypeScript has been used to encourage typings for more clarity and maintainability in the code.
 
 ## Available Scripts
 
