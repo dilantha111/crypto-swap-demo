@@ -26,6 +26,9 @@ export const SwapComponent: React.FC = () => {
   );
   const [buyCoinId, setBuyCoinId] = React.useState<string | undefined>();
 
+  /**
+   * on Swap button click we will toggle the token type and values.
+   */
   const onSwap = () => {
     const _sellValue = sellValue;
     setSellValue(buyValue);
@@ -37,6 +40,10 @@ export const SwapComponent: React.FC = () => {
   };
 
   const onSellCoinSelect = (coinId: string) => {
+    /**
+     * if the swap coin is same as the other buy or sell coin,
+     * we swap the values together with the coin type.
+     */
     if (coinId === buyCoinId) {
       return onSwap();
     }

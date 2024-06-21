@@ -1,6 +1,29 @@
-# Getting Started with Create React App
+# Crypto Swap Demo
+
+- This App demonstrate swapping crypto token values with buy and sell values.
+- Backend API calls are placeholder stubs.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Getting Started
+
+- `git clone <github-repo-url>`
+- `npm i`
+- `npm start`
+- You will need to install [Metamask](https://metamask.io/) in your browser to use the `connect wallet` functionality. This can be installed as a plugin for your desired browser ([Chrome](https://metamask.io/download/) is recommended)
+  - Note that this is a placeholder for the moment.
+
+## Best Practices:
+
+- Reusable components:
+  - Token Drop Down
+  - Token Field
+- Store:
+  - React Context api is adopted as a simple robust approach.
+- Testing:
+  - Pre commit hook with husky to ensure proper testing and linting is done before committing
+  - Test Coverage: To understand the level of confidence.
+  - Unit testing has included for services and
 
 ## Available Scripts
 
@@ -18,6 +41,10 @@ You will also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm test:coverage`
+
+Run the test coverage.
 
 ### `npm run build`
 
